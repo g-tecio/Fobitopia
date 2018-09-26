@@ -11,25 +11,32 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    
+    let skView = SKView()
+    
+    var sceneStateMachine: GKStateMachine!
+    
+    //Scenes
+    var mainScene: MenuScene!
+    var characterMenu: CharacterMenu!
 
     override func viewDidLoad() {
+        skView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height)
+        skView.center = self.view.center
+        skView.contentMode = .scaleAspectFill
+        skView.allowsTransparency = true
+        
         super.viewDidLoad()
         
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+        //MenuScene Setup
+        mainScene = MenuScene.init(sceneSize: view.bounds.size, referenceGVC: self)
+        
+        //Character Menu Setup
+        characterMenu = CharacterMenu.init(sceneSize: view.bounds.size, referenceGVC: self)
+        
+        skView.presentScene(mainScene)
+        view.addSubview(skView)
+        
     }
 
     override var shouldAutorotate: Bool {
