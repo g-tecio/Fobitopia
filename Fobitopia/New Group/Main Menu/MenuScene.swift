@@ -8,8 +8,17 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
+
+
 
 class MenuScene: SKScene {
+    
+    //Sounds
+    var playBtn = AVAudioPlayer()
+    var chaBtn = AVAudioPlayer()
+    //Scale
+    var scaleA = true
     
     var gameViewController: GameViewController!
     
@@ -47,10 +56,26 @@ class MenuScene: SKScene {
     
     //Present Elements
     override func didMove(to view: SKView) {
+        
+        do{
+            playBtn = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Scream Sound Effect", ofType: "mp3")!))
+            playBtn.prepareToPlay()
+            
+            chaBtn = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "torpedo", ofType: "mp3")!))
+        }
+        catch{
+            print(error)
+        }
+        
+        
+        
+        
         //Present Label and button
         self.addChild(menuControls.background)
         self.addChild(menuControls.playButton)
         self.addChild(menuControls.characterButton)
+        
+        menuControls.characterButton.isHidden = false
     }
     
     //Before another Scence will be presented
@@ -64,10 +89,19 @@ class MenuScene: SKScene {
             let item = atPoint(location)
             
             if (item.name == "character") {
-                gameViewController.skView.presentScene(gameViewController.characterMenu)
+                //  menuControls.characterButton.run(SKAction.scale(by: 5.0, duration: 0.01))
+                menuControls.characterButton.isHidden = true
+                scaleA = false
+                chaBtn.play()
+                let transition = SKTransition.doorway(withDuration: 1)
+                gameViewController.skView.presentScene(gameViewController.characterMenu, transition: transition)
             }else if (item.name == "play"){
-                gameViewController.skView.presentScene(gameViewController.gameScene)
-            }
+                menuControls.playButton.isHidden = true
+                scaleA = false
+                chaBtn.play()
+                let transition = SKTransition.crossFade(withDuration: 1)
+                gameViewController.skView.presentScene(gameViewController.gameScene, transition: transition)
+        }
             
 
             

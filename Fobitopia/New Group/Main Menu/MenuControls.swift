@@ -50,6 +50,7 @@ struct MenuControls {
             width: (characterButton.size.width * (inThisScene.size.width / characterButton.size.width)*(((characterButton.size.width/1920)*200)/100)),
             
             height: (characterButton.size.height * (inThisScene.size.height / characterButton.size.height)*(((characterButton.size.height/1080)*200)/100)))
+        
 
         
         

@@ -16,6 +16,9 @@
 		46CA7FBC215AB4310048EA4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46CA7FBB215AB4310048EA4D /* Assets.xcassets */; };
 		46CA7FCD215AB5D50048EA4D /* CharacterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA7FCC215AB5D50048EA4D /* CharacterMenu.swift */; };
 		46CA7FCF215AD7580048EA4D /* CharacterControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA7FCE215AD7580048EA4D /* CharacterControls.swift */; };
+		A31925F3215D37CE006D9CBB /* Scream Sound Effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A31925F2215D37CE006D9CBB /* Scream Sound Effect.mp3 */; };
+		A31925F6215D5954006D9CBB /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A31925F4215D5954006D9CBB /* explosion.mp3 */; };
+		A31925F7215D5954006D9CBB /* torpedo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A31925F5215D5954006D9CBB /* torpedo.mp3 */; };
 		A3336632215BE3BB0003D879 /* MenuControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3336631215BE3BB0003D879 /* MenuControls.swift */; };
 		A3336636215BE3F00003D879 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3336635215BE3F00003D879 /* MenuScene.swift */; };
 		A333663C215BF32F0003D879 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A333663A215BF32F0003D879 /* LaunchScreen.storyboard */; };
@@ -34,6 +37,9 @@
 		46CA7FC0215AB4310048EA4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46CA7FCC215AB5D50048EA4D /* CharacterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMenu.swift; sourceTree = "<group>"; };
 		46CA7FCE215AD7580048EA4D /* CharacterControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterControls.swift; sourceTree = "<group>"; };
+		A31925F2215D37CE006D9CBB /* Scream Sound Effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Scream Sound Effect.mp3"; sourceTree = "<group>"; };
+		A31925F4215D5954006D9CBB /* explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explosion.mp3; sourceTree = "<group>"; };
+		A31925F5215D5954006D9CBB /* torpedo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = torpedo.mp3; sourceTree = "<group>"; };
 		A3336631215BE3BB0003D879 /* MenuControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuControls.swift; sourceTree = "<group>"; };
 		A3336635215BE3F00003D879 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		A333663B215BF32F0003D879 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -94,6 +100,16 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
+		A31925F1215D37B4006D9CBB /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				A31925F4215D5954006D9CBB /* explosion.mp3 */,
+				A31925F5215D5954006D9CBB /* torpedo.mp3 */,
+				A31925F2215D37CE006D9CBB /* Scream Sound Effect.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		A3336637215BEDF20003D879 /* Character */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +122,7 @@
 		A3336639215BEE1D0003D879 /* Main Menu */ = {
 			isa = PBXGroup;
 			children = (
+				A31925F1215D37B4006D9CBB /* Sounds */,
 				A3336631215BE3BB0003D879 /* MenuControls.swift */,
 				A3336635215BE3F00003D879 /* MenuScene.swift */,
 			);
@@ -181,8 +198,11 @@
 			files = (
 				46CA7FBA215AB42D0048EA4D /* Main.storyboard in Resources */,
 				46CA7FB1215AB42D0048EA4D /* GameScene.sks in Resources */,
+				A31925F3215D37CE006D9CBB /* Scream Sound Effect.mp3 in Resources */,
 				46CA7FBC215AB4310048EA4D /* Assets.xcassets in Resources */,
+				A31925F6215D5954006D9CBB /* explosion.mp3 in Resources */,
 				A333663C215BF32F0003D879 /* LaunchScreen.storyboard in Resources */,
+				A31925F7215D5954006D9CBB /* torpedo.mp3 in Resources */,
 				46CA7FB3215AB42D0048EA4D /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
