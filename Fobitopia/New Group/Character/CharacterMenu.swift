@@ -12,8 +12,11 @@ import SpriteKit
 class CharacterMenu: SKScene {
     
     var gameViewController: GameViewController!
-    
+    var menuControls: MenuControls!
     var characterControls: CharacterControls!
+    
+    //Scale
+    var scaleA = true
     
     init(sceneSize: CGSize, referenceGVC: GameViewController) {
         
@@ -29,13 +32,10 @@ class CharacterMenu: SKScene {
         
         /// Load scene
         if let skView = gameViewController.view as! SKView? {
+            
             self.size = skView.bounds.size
             self.scaleMode = .fill
             
-            // TODO: Comment or remove before release to App Store
-            skView.ignoresSiblingOrder = true
-            skView.showsFPS = true
-            skView.showsNodeCount = true
         }
     }
     
@@ -50,10 +50,6 @@ class CharacterMenu: SKScene {
         self.addChild(characterControls.playerRam)
         self.addChild(characterControls.playerZen)
         self.addChild(characterControls.playerMor)
-        
-//        self.addChild(characterControls.playerZen)
-        
-        
     }
     
     //Before another scence will be presented
@@ -66,9 +62,24 @@ class CharacterMenu: SKScene {
         for touch in touches {
             let location = touch.location(in: self)
             let item = atPoint(location)
-            
+            let transition = SKTransition.crossFade(withDuration: 0.5)
             if (item.name == "back"){
-                gameViewController.skView.presentScene(gameViewController.mainScene)
+                gameViewController.skView.presentScene(gameViewController.mainScene, transition: transition)
+            }
+            
+            if(item.name == "ramstey" && scaleA == true){
+                characterControls.playerRam.run(SKAction.scale(by: 1.2, duration: 0.01))
+                scaleA = false
+            }
+            
+            if(item.name == "morgan" && scaleA == true){
+                characterControls.playerMor.run(SKAction.scale(by: 1.2, duration: 0.01))
+                scaleA = false
+            }
+            
+            if(item.name == "zenda" && scaleA == true){
+                characterControls.playerZen.run(SKAction.scale(by: 1.2, duration: 0.01))
+                scaleA = false
             }
             
         }

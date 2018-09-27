@@ -63,6 +63,7 @@ struct  CharacterControls {
         
         
         playerRam = SKSpriteNode(imageNamed: "Ram0")
+        playerRam.name = "ramstey"
         playerRam.zPosition = 1
         playerRam.position = CGPoint(
             x: (inThisScene.size.width * (((785 + (playerRam.size.width / 2)) / 1920 ) * 100) / 100),
@@ -94,6 +95,7 @@ struct  CharacterControls {
         )
         
         playerZen = SKSpriteNode(imageNamed: "Zenda0")
+        playerZen.name = "zenda"
         playerZen.zPosition = 1
         playerZen.position = CGPoint(
             x: (inThisScene.size.width * (((1463 + (playerZen.size.width / 2)) / 1920 ) * 100) / 100),
@@ -123,6 +125,7 @@ struct  CharacterControls {
         )
         
         playerMor = SKSpriteNode(imageNamed: "Morgan0")
+        playerMor.name = "morgan"
         playerMor.zPosition = 1
         playerMor.position = CGPoint(
             x: (inThisScene.size.width * (((107 + (playerMor.size.width / 2)) / 1920 ) * 100) / 100),
