@@ -19,6 +19,7 @@ class GameViewController: UIViewController {
     //Scenes
     var mainScene: MenuScene!
     var characterMenu: CharacterMenu!
+    var gameScene: GameScene!
 
     override func viewDidLoad() {
         skView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height)
@@ -33,6 +34,9 @@ class GameViewController: UIViewController {
         
         //Character Menu Setup
         characterMenu = CharacterMenu.init(sceneSize: view.bounds.size, referenceGVC: self)
+        
+        //GameScene
+        gameScene = GameScene.init(sceneSize: view.bounds.size, referenceGVC: self)
         
         skView.presentScene(mainScene)
         view.addSubview(skView)

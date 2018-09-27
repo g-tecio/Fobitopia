@@ -65,6 +65,8 @@ class MenuScene: SKScene {
             
             if (item.name == "character") {
                 gameViewController.skView.presentScene(gameViewController.characterMenu)
+            }else if (item.name == "play"){
+                gameViewController.skView.presentScene(gameViewController.gameScene)
             }
             
 

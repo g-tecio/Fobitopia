@@ -19,6 +19,7 @@
 		A3336632215BE3BB0003D879 /* MenuControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3336631215BE3BB0003D879 /* MenuControls.swift */; };
 		A3336636215BE3F00003D879 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3336635215BE3F00003D879 /* MenuScene.swift */; };
 		A333663C215BF32F0003D879 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A333663A215BF32F0003D879 /* LaunchScreen.storyboard */; };
+		DD4A9ED1215D2E8500B28365 /* GameControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4A9ED0215D2E8500B28365 /* GameControls.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A3336631215BE3BB0003D879 /* MenuControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuControls.swift; sourceTree = "<group>"; };
 		A3336635215BE3F00003D879 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		A333663B215BF32F0003D879 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DD4A9ED0215D2E8500B28365 /* GameControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControls.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,11 +70,11 @@
 		46CA7FAD215AB42D0048EA4D /* Fobitopia */ = {
 			isa = PBXGroup;
 			children = (
+				DD4A9ECF215D2E5000B28365 /* Game */,
 				46CA7FCB215AB5BE0048EA4D /* Menus */,
 				46CA7FAE215AB42D0048EA4D /* AppDelegate.swift */,
 				46CA7FB0215AB42D0048EA4D /* GameScene.sks */,
 				46CA7FB2215AB42D0048EA4D /* Actions.sks */,
-				46CA7FB4215AB42D0048EA4D /* GameScene.swift */,
 				46CA7FB6215AB42D0048EA4D /* GameViewController.swift */,
 				46CA7FB8215AB42D0048EA4D /* Main.storyboard */,
 				46CA7FBB215AB4310048EA4D /* Assets.xcassets */,
@@ -108,6 +110,15 @@
 				A3336635215BE3F00003D879 /* MenuScene.swift */,
 			);
 			path = "Main Menu";
+			sourceTree = "<group>";
+		};
+		DD4A9ECF215D2E5000B28365 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				46CA7FB4215AB42D0048EA4D /* GameScene.swift */,
+				DD4A9ED0215D2E8500B28365 /* GameControls.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +197,7 @@
 				A3336632215BE3BB0003D879 /* MenuControls.swift in Sources */,
 				46CA7FCD215AB5D50048EA4D /* CharacterMenu.swift in Sources */,
 				46CA7FB5215AB42D0048EA4D /* GameScene.swift in Sources */,
+				DD4A9ED1215D2E8500B28365 /* GameControls.swift in Sources */,
 				A3336636215BE3F00003D879 /* MenuScene.swift in Sources */,
 				46CA7FCF215AD7580048EA4D /* CharacterControls.swift in Sources */,
 				46CA7FB7215AB42D0048EA4D /* GameViewController.swift in Sources */,

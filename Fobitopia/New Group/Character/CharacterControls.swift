@@ -28,6 +28,7 @@ struct  CharacterControls {
        
         //Return menu
         playButton = SKSpriteNode(imageNamed: "btn-play")
+        playButton.name = "play"
         playButton.zPosition = -9
         
         playButton.position = CGPoint(
