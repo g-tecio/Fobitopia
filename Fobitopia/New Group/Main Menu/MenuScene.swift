@@ -74,6 +74,7 @@ class MenuScene: SKScene {
         self.addChild(menuControls.background)
         self.addChild(menuControls.playButton)
         self.addChild(menuControls.characterButton)
+        self.addChild(menuControls.icon)
         
         menuControls.characterButton.isHidden = false
     }

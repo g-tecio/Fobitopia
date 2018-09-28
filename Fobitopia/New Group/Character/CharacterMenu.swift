@@ -14,13 +14,8 @@ class CharacterMenu: SKScene {
     var gameViewController: GameViewController!
     var menuControls: MenuControls!
     var characterControls: CharacterControls!
-    
     var selection = 0
-    //Scale
-    var scaleA = true
-    var isTouchRam = false
-    var isTouchZen = false
-    var isTouchMor = false
+    
     
     init(sceneSize: CGSize, referenceGVC: GameViewController) {
         
@@ -54,6 +49,9 @@ class CharacterMenu: SKScene {
         self.addChild(characterControls.playerRam)
         self.addChild(characterControls.playerZen)
         self.addChild(characterControls.playerMor)
+        self.addChild(characterControls.NameRam)
+        self.addChild(characterControls.NameMor)
+        self.addChild(characterControls.NameZen)
     }
     
     //Before another scence will be presented
@@ -75,53 +73,15 @@ class CharacterMenu: SKScene {
                 gameViewController.skView.presentScene(gameViewController.gameScene, transition: transition2)
             }
             
-            if(item.name == "ramstey" && isTouchRam == false){
-                isTouchZen = false
-                isTouchMor = false
-                isTouchRam = true
-                characterControls.playerRam.run(SKAction.scale(by: 1.5, duration: 0.35))
-                characterControls.playerRam.run(blinkAnimation())
-                scaleA = false
-                if (selection == 2) {
-                    characterControls.playerMor.run(SKAction.scale(by: 0.5, duration: 0.35))
-                }else if (selection == 3){
-                    characterControls.playerZen.run(SKAction.scale(by: 0.9, duration: 0.35))
-                }
-                selection = 1
-                scaleA = true
-
+            if(item.name == "ramstey"){
+                    characterControls.playerRam.run(blinkAnimation())
             }
             
-            if(item.name == "morgan" && isTouchMor == false ){
-                isTouchZen = false
-                isTouchMor = true
-                isTouchRam = false
-                characterControls.playerMor.run(SKAction.scale(by: 1.5, duration: 0.35))
+            if(item.name == "morgan"){
                 characterControls.playerMor.run(blinkAnimation())
-                scaleA = false
-                if (selection == 1) {
-                    characterControls.playerRam.run(SKAction.scale(by: 0.5, duration: 0.35))
-                }else if (selection == 3){
-                    characterControls.playerZen.run(SKAction.scale(by: 0.5, duration: 0.35))
-                }
-                selection = 2
-                scaleA = true
             }
-            
-            if(item.name == "zenda" && isTouchZen == false){
-                isTouchZen = true
-                isTouchMor = false
-                isTouchRam = false
-                characterControls.playerZen.run(SKAction.scale(by: 1.5, duration: 0.35))
+            if(item.name == "zenda"){
                 characterControls.playerZen.run(blinkAnimation())
-                scaleA = false
-                if (selection == 1) {
-                    characterControls.playerRam.run(SKAction.scale(by: 0.5, duration: 0.35))
-                }else if (selection == 2){
-                    characterControls.playerMor.run(SKAction.scale(by: 0.5, duration: 0.35))
-                }
-                selection = 3
-                scaleA = true
             }
             
             

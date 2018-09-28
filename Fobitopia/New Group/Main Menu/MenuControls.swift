@@ -10,6 +10,8 @@ import SpriteKit
 
 struct MenuControls {
     
+    //icon
+    let icon: SKSpriteNode
     //Background
     let background: SKSpriteNode
     //Play button
@@ -21,9 +23,20 @@ struct MenuControls {
         
         background = SKSpriteNode.init(imageNamed: "background")
         background.name = "background"
-        background.zPosition = 1
+        background.zPosition = 0
         background.position = CGPoint(x: inThisScene.size.width/2, y: (inThisScene.size.height/2))
         background.size = CGSize(width: inThisScene.size.width, height: inThisScene.size.width)
+        
+        //Icon
+        icon = SKSpriteNode.init(imageNamed: "mm_icon")
+        icon.name = "icon"
+        icon.zPosition = 1
+        icon.position = CGPoint(x: inThisScene.size.width * 1/8, y: (inThisScene.size.height * 1/4))
+        icon.size = CGSize(
+            
+            width: (icon.size.width * (inThisScene.size.width / icon.size.width)*(((icon.size.width/1920)*100)/100)),
+            
+            height: (icon.size.height * (inThisScene.size.height / icon.size.height)*(((icon.size.height/1080)*100)/100)))
         
         //Play button
         playButton = SKSpriteNode.init(imageNamed: "btn-play")

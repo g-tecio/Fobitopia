@@ -16,6 +16,9 @@ struct  CharacterControls {
     let playerRam: SKSpriteNode
     let playerZen: SKSpriteNode
     let playerMor: SKSpriteNode
+    let NameRam: SKSpriteNode
+    let NameZen: SKSpriteNode
+    let NameMor: SKSpriteNode
     
     
     init(inThisScene: CharacterMenu) {
@@ -76,6 +79,18 @@ struct  CharacterControls {
         )
         
         
+        //Name
+        NameRam = SKSpriteNode(imageNamed: "RName")
+        NameRam.zPosition = 10
+        NameRam.position = CGPoint(x: inThisScene.size.width/2, y: (inThisScene.size.height*(30.20/100)))
+        
+        NameRam.size = CGSize(
+            
+            width: (NameRam.size.width * (inThisScene.size.width / NameRam.size.width)*(((NameRam.size.width/1920)*200)/100)),
+            
+            height: (NameRam.size.height * (inThisScene.size.height / NameRam.size.height)*(((NameRam.size.height/1080)*200)/100)))
+        
+        
         
         var textures:[SKTexture] = []
         for i in 0...4{
@@ -96,6 +111,7 @@ struct  CharacterControls {
         )
         
         playerZen = SKSpriteNode(imageNamed: "Zenda0")
+       
         playerZen.name = "zenda"
         playerZen.zPosition = 1
         playerZen.position = CGPoint(
@@ -106,6 +122,21 @@ struct  CharacterControls {
             width: (playerZen.size.width * (inThisScene.size.width / playerZen.size.width)*(((playerZen.size.width/1920)*100)/100)),
             height: (playerZen.size.height * (inThisScene.size.height / playerZen.size.height)*(((playerZen.size.height/1080)*100)/100))
         )
+        
+        //Name
+        NameZen = SKSpriteNode(imageNamed: "ZName")
+        NameZen.zPosition = 11
+        NameZen.position = CGPoint(x: inThisScene.size.width*(85/100), y: (inThisScene.size.height*(30.20/100)))
+        
+        NameZen.size = CGSize(
+            
+            width: (NameZen.size.width * (inThisScene.size.width / NameZen.size.width)*(((NameZen.size.width/1920)*200)/100)),
+            
+            height: (NameZen.size.height * (inThisScene.size.height / NameZen.size.height)*(((NameZen.size.height/1080)*200)/100)))
+        
+        
+        
+        
         
         var textures1:[SKTexture] = []
         for i in 0...3{
@@ -136,6 +167,17 @@ struct  CharacterControls {
             width: (playerMor.size.width * (inThisScene.size.width / playerMor.size.width)*(((playerMor.size.width/1920)*100)/100)),
             height: (playerMor.size.height * (inThisScene.size.height / playerMor.size.height)*(((playerMor.size.height/1080)*100)/100))
         )
+        
+        //Name
+        NameMor = SKSpriteNode(imageNamed: "MName")
+        NameMor.zPosition = 12
+        NameMor.position = CGPoint(x: inThisScene.size.width*(15/100), y: (inThisScene.size.height*(30.20/100)))
+        
+        NameMor.size = CGSize(
+            
+            width: (NameMor.size.width * (inThisScene.size.width / NameMor.size.width)*(((NameMor.size.width/1920)*200)/100)),
+            
+            height: (NameMor.size.height * (inThisScene.size.height / NameMor.size.height)*(((NameMor.size.height/1080)*200)/100)))
         
         var textures2:[SKTexture] = []
         for i in 0...4{

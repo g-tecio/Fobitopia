@@ -10,7 +10,7 @@ import SpriteKit
 struct GameControls {
     
     //Background
-    let background: SKSpriteNode
+    let house: SKSpriteNode
     
     //Characters
     let playerRam: SKSpriteNode
@@ -19,19 +19,39 @@ struct GameControls {
     init(inThisScene: GameScene){
         
         //Init Background
-        background = SKSpriteNode.init(imageNamed: "background")
-        background.name = "background"
-        background.zPosition = 1
-        background.position = CGPoint(x: inThisScene.size.width/2, y: (inThisScene.size.height/2))
-        background.size = CGSize(width: inThisScene.size.width, height: inThisScene.size.width)
+        house = SKSpriteNode.init(imageNamed: "house1")
+        house.name = "house"
+        house.zPosition = 0
+        house.position = CGPoint(x: inThisScene.size.width/2, y: (inThisScene.size.height/2))
+        house.size = CGSize(width: inThisScene.size.width, height: inThisScene.size.width)
+        
+        //House animation
+        var houseAnimationTextures:[SKTexture] = []
+        for i in 1...2{
+            houseAnimationTextures.append(SKTexture(imageNamed: "house\(i)"))
+        }
+        var houseAnimation:SKAction
+        houseAnimation = SKAction.animate(with: houseAnimationTextures, timePerFrame: 0.40)
+        house.run(SKAction.group([
+            SKAction.repeatForever(
+                SKAction.sequence([
+                    SKAction.repeat(houseAnimation, count: 1),
+                    SKAction.repeat(houseAnimation, count: 1).reversed()
+                    ]))]))
+        
         
         //Init Character Ramstey
         playerRam = SKSpriteNode(imageNamed: "RIdle1")
+        playerRam.name = "ram"
         playerRam.zPosition = 1
         playerRam.position = CGPoint(
             x: (inThisScene.size.width * (((785 + (playerRam.size.width / 2)) / 1920 ) * 100) / 100),
             y: (inThisScene.size.height/2)
         )
+        playerRam.physicsBody = SKPhysicsBody(rectangleOf: playerRam.size)
+        playerRam.physicsBody?.isDynamic = false
+        playerRam.physicsBody?.friction = 0
+        playerRam.physicsBody?.restitution = 1
         playerRam.size = CGSize(
             width: (playerRam.size.width * (inThisScene.size.width / playerRam.size.width)*(((playerRam.size.width/1920)*100)/100)),
             height: (playerRam.size.height * (inThisScene.size.height / playerRam.size.height)*(((playerRam.size.height/1080)*100)/100))
@@ -44,6 +64,8 @@ struct GameControls {
         var ramIdle:SKAction
         ramIdle = SKAction.animate(with: ramIdleTextures, timePerFrame: 0.25)
         
+      
+        
         
         playerRam.run(
             SKAction.group([
@@ -51,10 +73,7 @@ struct GameControls {
                     SKAction.sequence([
                         SKAction.repeat(ramIdle, count: 1),
                         SKAction.repeat(ramIdle, count: 1).reversed()
-                        ])
-                )
-                ])
-        )
+                        ]))]))
     }
     
 }
