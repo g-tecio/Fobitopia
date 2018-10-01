@@ -8,8 +8,15 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 
 class CharacterMenu: SKScene {
+    
+    
+    //Sounds
+    var ramSound = AVAudioPlayer()
+    var morSound = AVAudioPlayer()
+    var zenSound = AVAudioPlayer()
     
     var gameViewController: GameViewController!
     var menuControls: MenuControls!
@@ -52,6 +59,19 @@ class CharacterMenu: SKScene {
         self.addChild(characterControls.NameRam)
         self.addChild(characterControls.NameMor)
         self.addChild(characterControls.NameZen)
+        
+        do{
+            ramSound = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Ram", ofType: "wav")!))
+            ramSound.prepareToPlay()
+            
+            zenSound = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Zenda", ofType: "wav")!))
+            zenSound.prepareToPlay()
+            
+            morSound = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Morgan", ofType: "wav")!))
+            morSound.prepareToPlay()
+        }catch{
+            print(error)
+        }
     }
     
     //Before another scence will be presented
@@ -75,13 +95,16 @@ class CharacterMenu: SKScene {
             
             if(item.name == "ramstey"){
                     characterControls.playerRam.run(blinkAnimation())
+                ramSound.play()
             }
             
             if(item.name == "morgan"){
                 characterControls.playerMor.run(blinkAnimation())
+                zenSound.play()
             }
             if(item.name == "zenda"){
                 characterControls.playerZen.run(blinkAnimation())
+                morSound.play()
             }
             
             
