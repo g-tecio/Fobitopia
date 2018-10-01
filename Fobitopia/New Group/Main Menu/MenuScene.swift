@@ -58,10 +58,10 @@ class MenuScene: SKScene {
     override func didMove(to view: SKView) {
         
         do{
-            playBtn = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Scream Sound Effect", ofType: "mp3")!))
+            playBtn = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Character", ofType: "wav")!))
             playBtn.prepareToPlay()
             
-            chaBtn = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "torpedo", ofType: "mp3")!))
+            chaBtn = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Character", ofType: "wav")!))
         }
         catch{
             print(error)
@@ -94,13 +94,13 @@ class MenuScene: SKScene {
                 menuControls.characterButton.isHidden = true
                 scaleA = false
                 chaBtn.play()
-                let transition = SKTransition.doorway(withDuration: 1)
+                let transition = SKTransition.doorway(withDuration: 1.5)
                 gameViewController.skView.presentScene(gameViewController.characterMenu, transition: transition)
             }else if (item.name == "play"){
                 menuControls.playButton.isHidden = true
                 scaleA = false
                 chaBtn.play()
-                let transition = SKTransition.crossFade(withDuration: 1)
+                let transition = SKTransition.crossFade(withDuration: 1.5)
                 gameViewController.skView.presentScene(gameViewController.gameScene, transition: transition)
         }
             
