@@ -19,13 +19,18 @@ struct GameControls {
     
     
     //Animations
+    var ramIdle: SKAction
     var ramBack: SKAction
     var ramFront: SKAction
     var ramLeft: SKAction
     var ramRight: SKAction
+    var morIdle: SKAction
+    var morLeft: SKAction
+    var morRight: SKAction
     
     //Characters
     var playerRam: SKSpriteNode
+    var playerMor: SKSpriteNode
 
     init(inThisScene: GameScene){
         
@@ -84,13 +89,13 @@ struct GameControls {
       
         ramBack = SKAction.animate(with: ramBackTextures, timePerFrame: 0.25)
         
-        
+        //Ram Animation
         //Idle Animation
         var ramIdleTextures:[SKTexture] = []
         for i in 1...2{
             ramIdleTextures.append(SKTexture(imageNamed: "RIdle\(i)"))
         }
-        var ramIdle:SKAction
+        
         ramIdle = SKAction.animate(with: ramIdleTextures, timePerFrame: 0.25)
         
         //Front Animation
@@ -121,6 +126,57 @@ struct GameControls {
                     SKAction.sequence([
                         SKAction.repeat(ramIdle, count: 1),
                         SKAction.repeat(ramIdle, count: 1).reversed()
+                        ]))]))
+        
+        //Init Player Morgan
+        playerMor = SKSpriteNode(imageNamed: "MIdle1")
+        playerMor.name = "mor"
+        playerMor.zPosition = 2
+        playerMor.position = CGPoint(
+            x: (inThisScene.size.width * (((785 + (playerMor.size.width / 2)) / 1920 ) * 100) / 100),
+            y: (inThisScene.size.height/2)
+        )
+        playerMor.size = CGSize(
+            width: (playerMor.size.width * (inThisScene.size.width / playerMor.size.width)*(((playerMor.size.width/1920)*100)/100)),
+            height: (playerMor.size.height * (inThisScene.size.height / playerMor.size.height)*(((playerMor.size.height/1080)*100)/100))
+        )
+        playerMor.physicsBody = SKPhysicsBody.init(rectangleOf: playerRam.size)
+        playerMor.physicsBody?.affectedByGravity = false
+        playerMor.physicsBody?.isDynamic = false
+        playerMor.physicsBody?.categoryBitMask = playerCategory
+        playerMor.physicsBody?.collisionBitMask = fenceCategory
+        playerMor.physicsBody?.allowsRotation = false
+        
+        //Mor Animation
+        //Idle Animation
+        var morIdleTextures:[SKTexture] = []
+        for i in 1...2{
+            morIdleTextures.append(SKTexture(imageNamed: "MIdle\(i)"))
+        }
+        
+        morIdle = SKAction.animate(with: morIdleTextures, timePerFrame: 0.25)
+        
+        
+        //Left Animation
+        var morLeftTextures:[SKTexture] = []
+        for i in 1...2{
+            morLeftTextures.append(SKTexture(imageNamed: "MLeft\(i)"))
+        }
+        morLeft = SKAction.animate(with: morLeftTextures, timePerFrame: 0.25)
+        
+        //Right
+        var morRightTextures:[SKTexture] = []
+        for i in 1...2{
+            morRightTextures.append(SKTexture(imageNamed: "MRight\(i)"))
+        }
+        morRight = SKAction.animate(with: morRightTextures, timePerFrame: 0.25)
+        
+        playerMor.run(
+            SKAction.group([
+                SKAction.repeatForever(
+                    SKAction.sequence([
+                        SKAction.repeat(morIdle, count: 1),
+                        SKAction.repeat(morIdle, count: 1).reversed()
                         ]))]))
     }
     

@@ -17,14 +17,17 @@ let BorderCategory : UInt32 = 0x1 << 2
 
 class GameScene: SKScene {
     
-    
+    var personaje: SKSpriteNode!
+    var animaLeft: SKAction!
+    var animaRight: SKAction!
+
     var dirX: CGFloat = 0.0
     var playerRam : SKSpriteNode!
  
-    
-    var gameViewController: GameViewController!
+        var gameViewController: GameViewController!
     //Game Controls
     var gameControls: GameControls!
+    var characterControls: CharacterControls!
     
     private var lastUpdateTime : TimeInterval = 0
     
@@ -40,12 +43,15 @@ class GameScene: SKScene {
         //Game Controls
         gameControls = GameControls.init(inThisScene: self)
         
+
+        
         //Load scene
         if let skView = gameViewController.view as! SKView? {
             
             self.size = skView.bounds.size
             self.scaleMode = .fill
         }
+        
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -54,9 +60,33 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         self.addChild(gameControls.house)
-        self.addChild(gameControls.playerRam)
 
-        
+        //Seleccionar personaje
+        switch selectPlayer {
+        case 1:
+            print("tu personaje es Ramstey")
+            self.addChild(gameControls.playerRam)
+            personaje = gameControls.playerRam
+            animaLeft = gameControls.ramLeft
+            animaRight = gameControls.ramRight
+            break;
+        case 2:
+            print("tu personaje es Morgan")
+            self.addChild(gameControls.playerMor)
+            personaje = gameControls.playerMor
+            animaLeft = gameControls.morLeft
+            animaRight = gameControls.morRight
+            break;
+        case 3:
+            print("tu personaje es Zenda")
+            self.addChild(gameControls.playerRam)
+            personaje = gameControls.playerRam
+            animaLeft = gameControls.ramLeft
+            animaRight = gameControls.ramRight
+            break;
+        default:
+            break;
+        }
         //Test
         let player = gameControls.playerRam
         player.physicsBody = SKPhysicsBody.init(rectangleOf: gameControls.playerRam.size)
@@ -74,27 +104,32 @@ class GameScene: SKScene {
        let touch = touches.first
         let touchLocation = touch!.location(in: self)
         
-        if(gameControls.playerRam.position.x > touchLocation.x){
-            gameControls.playerRam.run(SKAction.scaleX(to: 1, duration: 0.1))
-            gameControls.playerRam.run(SKAction.group([SKAction.repeatForever(SKAction.sequence([SKAction.repeat(gameControls.ramRight, count: 1),SKAction.repeat(gameControls.ramRight, count: 1).reversed()                                                                                 ]))]))
+        
+        if(personaje.position.x > touchLocation.x){
+            personaje.run(SKAction.scaleX(to: 1, duration: 0.1))
+            personaje.run(SKAction.group([SKAction.repeatForever(SKAction.sequence([SKAction.repeat(animaRight, count: 1),
+                          SKAction.repeat(animaRight, count: 1).reversed()
+                ]))]))
 
             
-        }else if(gameControls.playerRam.position.x > touchLocation.x){
-            gameControls.playerRam.run(SKAction.scaleX(to: 1, duration: 0.1))
-            gameControls.playerRam.run(SKAction.group([SKAction.repeatForever(SKAction.sequence([SKAction.repeat(gameControls.ramLeft, count: 1),                           SKAction.repeat(gameControls.ramLeft, count: 1).reversed()                                                                                 ]))]))
+        }else if(personaje.position.x > touchLocation.x){
+            personaje.run(SKAction.scaleX(to: 1, duration: 0.1))
+            personaje.run(SKAction.group([SKAction.repeatForever(SKAction.sequence([SKAction.repeat(animaLeft, count: 1),
+                          SKAction.repeat(animaLeft, count: 1).reversed()
+                ]))]))
         }
         
-        let xDist = (gameControls.playerRam.position.x - touchLocation.x)
-        let yDist = (gameControls.playerRam.position.y - touchLocation.y)
+        let xDist = (personaje.position.x - touchLocation.x)
+        let yDist = (personaje.position.y - touchLocation.y)
         
         let distance = sqrt((xDist * xDist) + (yDist * yDist))
         
         let speed:CGFloat = 500.0
         let duration: CGFloat = distance/speed
         
-        gameControls.playerRam.removeAction(forKey: "moveRamSide")
+        personaje.removeAction(forKey: "moveRamSide")
         
-        gameControls.playerRam.run(SKAction.moveTo(x: touchLocation.x, duration: TimeInterval(duration)), withKey: "moveRamSide")
+        personaje.run(SKAction.moveTo(x: touchLocation.x, duration: TimeInterval(duration)), withKey: "moveRamSide")
         
     }
         

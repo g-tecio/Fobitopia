@@ -19,7 +19,7 @@ struct  CharacterControls {
     let NameRam: SKSpriteNode
     let NameZen: SKSpriteNode
     let NameMor: SKSpriteNode
-    
+    var selectPlayer = 1
     
     init(inThisScene: CharacterMenu) {
         

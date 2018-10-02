@@ -10,6 +10,8 @@ import Foundation
 import SpriteKit
 import AVFoundation
 
+public var selectPlayer = 1
+
 class CharacterMenu: SKScene {
     
     
@@ -22,6 +24,7 @@ class CharacterMenu: SKScene {
     var menuControls: MenuControls!
     var characterControls: CharacterControls!
     var selection = 0
+    
     
     
     init(sceneSize: CGSize, referenceGVC: GameViewController) {
@@ -95,19 +98,26 @@ class CharacterMenu: SKScene {
             
             if(item.name == "ramstey"){
                     characterControls.playerRam.run(blinkAnimation())
-                ramSound.play()
+                    ramSound.play()
+                    selectPlayer = 1
+                    print(selectPlayer)
             }
             
             if(item.name == "morgan"){
                 characterControls.playerMor.run(blinkAnimation())
                 zenSound.play()
+                selectPlayer = 2
+                print(selectPlayer)
+                
             }
             if(item.name == "zenda"){
                 characterControls.playerZen.run(blinkAnimation())
                 morSound.play()
+                selectPlayer = 3
+                print(selectPlayer)
             }
             
-            
+
         }
     }
     
