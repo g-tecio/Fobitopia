@@ -105,9 +105,9 @@
 		A31925F1215D37B4006D9CBB /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				A3368E39216262C000A480E6 /* Ram.wav */,
 				A3368E37216262C000A480E6 /* Character.wav */,
 				A3368E38216262C000A480E6 /* Morgan.wav */,
-				A3368E39216262C000A480E6 /* Ram.wav */,
 				A3368E3A216262C000A480E6 /* Zenda.wav */,
 			);
 			path = Sounds;
