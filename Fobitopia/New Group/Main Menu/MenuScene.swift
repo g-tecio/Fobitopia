@@ -91,13 +91,13 @@ class MenuScene: SKScene {
             
             if (item.name == "character") {
                 //  menuControls.characterButton.run(SKAction.scale(by: 5.0, duration: 0.01))
-                menuControls.characterButton.isHidden = true
+              
                 scaleA = false
                 chaBtn.play()
                 let transition = SKTransition.doorway(withDuration: 1.5)
                 gameViewController.skView.presentScene(gameViewController.characterMenu, transition: transition)
             }else if (item.name == "play"){
-                menuControls.playButton.isHidden = true
+               
                 scaleA = false
                 chaBtn.play()
                 let transition = SKTransition.crossFade(withDuration: 1.5)
