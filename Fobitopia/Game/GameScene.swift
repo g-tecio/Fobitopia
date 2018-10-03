@@ -60,6 +60,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         self.addChild(gameControls.house)
+        self.addChild(gameControls.returnButton)
 
         //Seleccionar personaje
         switch selectPlayer {
@@ -100,36 +101,52 @@ class GameScene: SKScene {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-       let touch = touches.first
-        let touchLocation = touch!.location(in: self)
-        
-        
-        if(personaje.position.x > touchLocation.x){
-            personaje.run(SKAction.scaleX(to: 1, duration: 0.1))
-            personaje.run(SKAction.group([SKAction.repeatForever(SKAction.sequence([SKAction.repeat(animaRight, count: 1),
-                          SKAction.repeat(animaRight, count: 1).reversed()
-                ]))]))
-
+        for touch in touches {
+            let location = touch.location(in: self)
+            let item = atPoint(location)
+            let transition2 = SKTransition.crossFade(withDuration: 1.5)
+            if (item.name == "return_button"){
+                gameViewController.skView.presentScene(gameViewController.mainScene, transition: transition2)
+                removeAllChildren()
+            }
+            if(personaje.position.x > location.x){
+                personaje.run(SKAction.scaleX(to: 1, duration: 0.1))
+                personaje.run(SKAction.group([
+                    SKAction.repeat(
+                        SKAction.sequence([
+                            SKAction.repeat(animaLeft, count: 1),
+                            SKAction.repeat(animaLeft, count: 1).reversed()
+                            ]), count: 2
+                    )
+                    ])
+                )
+                
+                
+            }else if(personaje.position.x < location.x){
+                personaje.run(SKAction.scaleX(to: 1, duration: 0.1))
+                personaje.run(SKAction.group([
+                    SKAction.repeat(
+                        SKAction.sequence([
+                            SKAction.repeat(animaRight, count: 1),
+                            SKAction.repeat(animaRight, count: 1).reversed()
+                            ]), count: 2
+                    )
+                    ])
+                )
+            }
             
-        }else if(personaje.position.x > touchLocation.x){
-            personaje.run(SKAction.scaleX(to: 1, duration: 0.1))
-            personaje.run(SKAction.group([SKAction.repeatForever(SKAction.sequence([SKAction.repeat(animaLeft, count: 1),
-                          SKAction.repeat(animaLeft, count: 1).reversed()
-                ]))]))
+            let xDist = (personaje.position.x - location.x)
+            let yDist = (personaje.position.y - location.y)
+            
+            let distance = sqrt((xDist * xDist) + (yDist * yDist))
+            
+            let speed:CGFloat = 100.0
+            let duration: CGFloat = distance/speed
+            
+            personaje.removeAction(forKey: "moveRamSide")
+            
+            personaje.run(SKAction.moveTo(x: location.x, duration: TimeInterval(duration)), withKey: "moveRamSide")
         }
-        
-        let xDist = (personaje.position.x - touchLocation.x)
-        let yDist = (personaje.position.y - touchLocation.y)
-        
-        let distance = sqrt((xDist * xDist) + (yDist * yDist))
-        
-        let speed:CGFloat = 500.0
-        let duration: CGFloat = distance/speed
-        
-        personaje.removeAction(forKey: "moveRamSide")
-        
-        personaje.run(SKAction.moveTo(x: touchLocation.x, duration: TimeInterval(duration)), withKey: "moveRamSide")
         
     }
         

@@ -16,6 +16,8 @@ struct GameControls {
     //Background
     let house: SKSpriteNode
     
+    //Return Button
+    let returnButton: SKSpriteNode
     
     
     //Animations
@@ -38,6 +40,15 @@ struct GameControls {
         borderBody = SKPhysicsBody(edgeLoopFrom: inThisScene.frame)
         borderBody.friction = 0
         inThisScene.physicsBody = borderBody
+        
+        //Return Button
+        returnButton = SKSpriteNode.init(imageNamed: "return")
+        returnButton.name = "return_button"
+        returnButton.zPosition = 10
+        returnButton.position = CGPoint(
+            x: (inThisScene.size.width * (((60 + (returnButton.size.width / 2)) / 1920 ) * 100) / 100),
+            y: (inThisScene.size.height * (((980 + (returnButton.size.height / 2)) / 1080 ) * 100) / 100)
+        )
         
         //Init Background
         house = SKSpriteNode.init(imageNamed: "house1")
