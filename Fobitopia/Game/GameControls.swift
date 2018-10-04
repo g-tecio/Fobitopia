@@ -197,7 +197,7 @@ struct GameControls {
         faceMor.zPosition = 15
         faceMor.position = CGPoint(
             x: (inThisScene.size.width * (((300 + (faceMor.size.width / 2)) / 1920 ) * 100) / 100),
-            y: (inThisScene.size.height * (((850 + (faceMor.size.height / 2)) / 1080 ) * 100) / 100)
+            y: (inThisScene.size.height * (((850 + (returnButton.size.height / 2)) / 1080 ) * 100) / 100)
         )
         faceMor.size = CGSize(
             

@@ -74,9 +74,9 @@ class GameScene: SKScene {
     
     func initFromMorn(){
         morLabel.fontColor = SKColor.red
-        morLabel.fontSize = 35
+        morLabel.fontSize =  40
         morLabel.zPosition = 100
-        morLabel.text = "Do you have fear of the dark?"
+        morLabel.text = "Where is mommy?"
         
         morLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
         morLabel.position = CGPoint(x: 200, y: frame.size.height - 90 )
