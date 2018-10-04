@@ -16,8 +16,16 @@ struct GameControls {
     //Background
     let house: SKSpriteNode
     
+    //Dialogs box
+    let dialogRam: SKSpriteNode
+    let dialogMor: SKSpriteNode
+    
     //Return Button
     let returnButton: SKSpriteNode
+    
+    //FaceDialog
+    let faceRam: SKSpriteNode
+    let faceMor: SKSpriteNode
     
     
     //Animations
@@ -50,6 +58,20 @@ struct GameControls {
             y: (inThisScene.size.height * (((980 + (returnButton.size.height / 2)) / 1080 ) * 100) / 100)
         )
         
+        //Dialog Ram
+        dialogRam = SKSpriteNode.init(imageNamed: "dialog")
+        dialogRam.name = "dialogRam"
+        dialogRam.zPosition = 14
+        dialogRam.position = CGPoint(
+            x: (inThisScene.size.width * (((960 + (returnButton.size.width / 2)) / 1920 ) * 100) / 100),
+            y: (inThisScene.size.height * (((850 + (returnButton.size.height / 2)) / 1080 ) * 100) / 100)
+        )
+        dialogRam.size = CGSize(
+            
+            width: (dialogRam.size.width * (inThisScene.size.width / dialogRam.size.width)*(((dialogRam.size.width/1920)*200)/100)),
+            
+            height: (dialogRam.size.height * (inThisScene.size.height / dialogRam.size.height)*(((dialogRam.size.height/1080)*200)/100)))
+        
         //Init Background
         house = SKSpriteNode.init(imageNamed: "house1")
         house.name = "house"
@@ -71,6 +93,21 @@ struct GameControls {
                     SKAction.repeat(houseAnimation, count: 1).reversed()
                     ]))]))
         
+        
+        
+        //FaceDialog Ramstey
+        faceRam = SKSpriteNode(imageNamed: "RFaceC")
+        faceRam.name = "faceRam"
+        faceRam.zPosition = 15
+        faceRam.position = CGPoint(
+            x: (inThisScene.size.width * (((300 + (faceRam.size.width / 2)) / 1920 ) * 100) / 100),
+            y: (inThisScene.size.height * (((850 + (returnButton.size.height / 2)) / 1080 ) * 100) / 100)
+        )
+        faceRam.size = CGSize(
+            
+            width: (faceRam.size.width * (inThisScene.size.width / faceRam.size.width)*(((faceRam.size.width/1920)*200)/100)),
+            
+            height: (dialogRam.size.height * (inThisScene.size.height / faceRam.size.height)*(((faceRam.size.height/1080)*200)/100)))
         
         //Init Character Ramstey
         playerRam = SKSpriteNode(imageNamed: "RIdle1")
@@ -138,6 +175,35 @@ struct GameControls {
                         SKAction.repeat(ramIdle, count: 1),
                         SKAction.repeat(ramIdle, count: 1).reversed()
                         ]))]))
+        
+        //DialogMorg
+        dialogMor = SKSpriteNode.init(imageNamed: "dialog")
+        dialogMor.name = "dialogMorn"
+        dialogMor.zPosition = 14
+        dialogMor.position = CGPoint(
+            x: (inThisScene.size.width * (((960 + (returnButton.size.width / 2)) / 1920 ) * 100) / 100),
+            y: (inThisScene.size.height * (((850 + (returnButton.size.height / 2)) / 1080 ) * 100) / 100)
+        )
+        dialogMor.size = CGSize(
+            
+            width: (dialogMor.size.width * (inThisScene.size.width / dialogMor.size.width)*(((dialogMor.size.width/1920)*200)/100)),
+            
+            height: (dialogMor.size.height * (inThisScene.size.height / dialogMor.size.height)*(((dialogMor.size.height/1080)*200)/100)))
+        
+        
+        //Facedialog Morgan
+        faceMor = SKSpriteNode(imageNamed: "MFaceC")
+        faceMor.name = "faceRam"
+        faceMor.zPosition = 15
+        faceMor.position = CGPoint(
+            x: (inThisScene.size.width * (((300 + (faceMor.size.width / 2)) / 1920 ) * 100) / 100),
+            y: (inThisScene.size.height * (((850 + (returnButton.size.height / 2)) / 1080 ) * 100) / 100)
+        )
+        faceMor.size = CGSize(
+            
+            width: (faceMor.size.width * (inThisScene.size.width / faceMor.size.width)*(((faceMor.size.width/1920)*200)/100)),
+            
+            height: (faceMor.size.height * (inThisScene.size.height / faceMor.size.height)*(((faceMor.size.height/1080)*200)/100)))
         
         //Init Player Morgan
         playerMor = SKSpriteNode(imageNamed: "MIdle1")
