@@ -19,6 +19,7 @@ class GameScene: SKScene {
     
     //textLabel
     let ramLabel = SKLabelNode(fontNamed: "Snake Jacket")
+    let morLabel = SKLabelNode(fontNamed: "Snake Jacket")
     
     var personaje: SKSpriteNode!
     var animaLeft: SKAction!
@@ -60,7 +61,7 @@ class GameScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func initFont(){
+    func initFontRam(){
         ramLabel.fontColor = SKColor.red
         ramLabel.fontSize = 50
         ramLabel.zPosition = 100
@@ -69,12 +70,17 @@ class GameScene: SKScene {
         ramLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
         ramLabel.position = CGPoint(x: 200, y: frame.size.height - 90 )
         addChild(ramLabel)
+    }
+    
+    func initFromMorn(){
+        morLabel.fontColor = SKColor.red
+        morLabel.fontSize = 35
+        morLabel.zPosition = 100
+        morLabel.text = "Do you have fear of the dark?"
         
-        UIView.animate(withDuration: 0.7, delay: 1.0, options: .curveLinear, animations: {
-            self.view?.layoutIfNeeded()
-        }, completion: {finished in
-            print ("Movement letters")
-        })
+        morLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
+        morLabel.position = CGPoint(x: 200, y: frame.size.height - 90 )
+        addChild(morLabel)
     }
 
     
@@ -82,9 +88,8 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         self.addChild(gameControls.house)
         self.addChild(gameControls.returnButton)
-        self.addChild(gameControls.dialog)
-        self.addChild(gameControls.faceRam)
-        initFont()
+        
+        
 
         //Seleccionar personaje
         switch selectPlayer {
@@ -94,6 +99,9 @@ class GameScene: SKScene {
             personaje = gameControls.playerRam
             animaLeft = gameControls.ramLeft
             animaRight = gameControls.ramRight
+            self.addChild(gameControls.dialogRam)
+            self.addChild(gameControls.faceRam)
+            initFontRam()
             break;
         case 2:
             print("tu personaje es Morgan")
@@ -101,6 +109,9 @@ class GameScene: SKScene {
             personaje = gameControls.playerMor
             animaLeft = gameControls.morLeft
             animaRight = gameControls.morRight
+            self.addChild(gameControls.dialogMor)
+            self.addChild(gameControls.faceMor)
+            initFromMorn()
             break;
         case 3:
             print("tu personaje es Zenda")
@@ -129,10 +140,15 @@ class GameScene: SKScene {
             let location = touch.location(in: self)
             let item = atPoint(location)
             let transition2 = SKTransition.crossFade(withDuration: 1.5)
-            if (item.name == "dialog"){
-                gameControls.dialog.isHidden = true
+            if (item.name == "dialogRam"){
+                gameControls.dialogRam.isHidden = true
                 gameControls.faceRam.isHidden = true
                 ramLabel.isHidden = true
+            }
+            if (item.name == "dialogMorn"){
+                gameControls.dialogMor.isHidden = true
+                gameControls.faceMor.isHidden = true
+                morLabel.isHidden = true
             }
             if (item.name == "return_button"){
                 gameViewController.skView.presentScene(gameViewController.mainScene, transition: transition2)
