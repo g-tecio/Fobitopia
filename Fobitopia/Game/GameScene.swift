@@ -20,11 +20,14 @@ class GameScene: SKScene {
     var personaje: SKSpriteNode!
     var animaLeft: SKAction!
     var animaRight: SKAction!
-
+    var animaIdle: SKAction!
+    var location = CGPoint()
+    
     var dirX: CGFloat = 0.0
     var playerRam : SKSpriteNode!
- 
-        var gameViewController: GameViewController!
+    var isMoved = false
+    
+    var gameViewController: GameViewController!
     //Game Controls
     var gameControls: GameControls!
     var characterControls: CharacterControls!
@@ -70,6 +73,7 @@ class GameScene: SKScene {
             personaje = gameControls.playerRam
             animaLeft = gameControls.ramLeft
             animaRight = gameControls.ramRight
+            animaIdle = gameControls.ramIdle
             break;
         case 2:
             print("tu personaje es Morgan")
@@ -77,6 +81,7 @@ class GameScene: SKScene {
             personaje = gameControls.playerMor
             animaLeft = gameControls.morLeft
             animaRight = gameControls.morRight
+            animaIdle = gameControls.morIdle
             break;
         case 3:
             print("tu personaje es Zenda")
@@ -84,6 +89,7 @@ class GameScene: SKScene {
             personaje = gameControls.playerRam
             animaLeft = gameControls.ramLeft
             animaRight = gameControls.ramRight
+            animaIdle = gameControls.ramIdle
             break;
         default:
             break;
@@ -96,44 +102,17 @@ class GameScene: SKScene {
         player.physicsBody?.categoryBitMask = playerCategory
         gameControls.borderBody.categoryBitMask = BorderCategory
         player.physicsBody?.contactTestBitMask = BorderCategory | fenceCategory
+    
+
     }
     
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            let location = touch.location(in: self)
+            location = touch.location(in: self)
             let item = atPoint(location)
             let transition2 = SKTransition.crossFade(withDuration: 1.5)
-            if (item.name == "return_button"){
-                gameViewController.skView.presentScene(gameViewController.mainScene, transition: transition2)
-                removeAllChildren()
-            }
-            if(personaje.position.x > location.x){
-                personaje.run(SKAction.scaleX(to: 1, duration: 0.1))
-                personaje.run(SKAction.group([
-                    SKAction.repeat(
-                        SKAction.sequence([
-                            SKAction.repeat(animaLeft, count: 1),
-                            SKAction.repeat(animaLeft, count: 1).reversed()
-                            ]), count: 2
-                    )
-                    ])
-                )
-                
-                
-            }else if(personaje.position.x < location.x){
-                personaje.run(SKAction.scaleX(to: 1, duration: 0.1))
-                personaje.run(SKAction.group([
-                    SKAction.repeat(
-                        SKAction.sequence([
-                            SKAction.repeat(animaRight, count: 1),
-                            SKAction.repeat(animaRight, count: 1).reversed()
-                            ]), count: 2
-                    )
-                    ])
-                )
-            }
             
             let xDist = (personaje.position.x - location.x)
             let yDist = (personaje.position.y - location.y)
@@ -143,9 +122,46 @@ class GameScene: SKScene {
             let speed:CGFloat = 100.0
             let duration: CGFloat = distance/speed
             
+
+            if (item.name == "return_button"){
+                gameViewController.skView.presentScene(gameViewController.mainScene, transition: transition2)
+                removeAllChildren()
+            }
+            if(personaje.position.x > location.x){
+
+                personaje.run(SKAction.scaleX(to: 1, duration: 0.1))
+                personaje.run(SKAction.group([
+                    SKAction.repeatForever(
+                        SKAction.sequence([
+                            SKAction.repeat(animaLeft, count: 1),
+                            SKAction.repeat(animaLeft, count: 1).reversed()
+                            ])
+                        )
+                    ])
+                )
+                
+                
+            }else if(personaje.position.x < location.x){
+
+                personaje.run(SKAction.scaleX(to: 1, duration: 0.1))
+                personaje.run(SKAction.group([
+                    SKAction.repeatForever(
+                        SKAction.sequence([
+                            SKAction.repeat(animaRight, count: 1),
+                            SKAction.repeat(animaRight, count: 1).reversed()
+                            ])
+                    )
+                    ])
+                )
+            }
+            
+
+            
             personaje.removeAction(forKey: "moveRamSide")
             
             personaje.run(SKAction.moveTo(x: location.x, duration: TimeInterval(duration)), withKey: "moveRamSide")
+
+            
         }
         
     }
@@ -156,10 +172,28 @@ class GameScene: SKScene {
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
-    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
     
     override func update(_ currentTime: TimeInterval) {
+        print(location.x)
+        print(personaje.position.x)
+        let intervalo = location.x - 2.0
         
+        if( personaje.position.x < location.x && personaje.position.x  > intervalo || personaje.position.x == location.x){
+            print("STOP")
+            personaje.run(SKAction.group([
+                SKAction.repeatForever(
+                    SKAction.sequence([
+                        SKAction.repeat(animaIdle, count: 1),
+                        SKAction.repeat(animaIdle, count: 1).reversed()
+                        ])
+                )
+                ])
+            )
+        }
+
     }
     
     //
