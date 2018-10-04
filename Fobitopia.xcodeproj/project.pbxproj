@@ -16,6 +16,7 @@
 		46CA7FBC215AB4310048EA4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46CA7FBB215AB4310048EA4D /* Assets.xcassets */; };
 		46CA7FCD215AB5D50048EA4D /* CharacterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA7FCC215AB5D50048EA4D /* CharacterMenu.swift */; };
 		46CA7FCF215AD7580048EA4D /* CharacterControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA7FCE215AD7580048EA4D /* CharacterControls.swift */; };
+		A31683F92166744600D43E01 /* Snake Jacket.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A31683F82166744600D43E01 /* Snake Jacket.ttf */; };
 		A3336632215BE3BB0003D879 /* MenuControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3336631215BE3BB0003D879 /* MenuControls.swift */; };
 		A3336636215BE3F00003D879 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3336635215BE3F00003D879 /* MenuScene.swift */; };
 		A333663C215BF32F0003D879 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A333663A215BF32F0003D879 /* LaunchScreen.storyboard */; };
@@ -38,6 +39,7 @@
 		46CA7FC0215AB4310048EA4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46CA7FCC215AB5D50048EA4D /* CharacterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMenu.swift; sourceTree = "<group>"; };
 		46CA7FCE215AD7580048EA4D /* CharacterControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterControls.swift; sourceTree = "<group>"; };
+		A31683F82166744600D43E01 /* Snake Jacket.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Snake Jacket.ttf"; sourceTree = "<group>"; };
 		A3336631215BE3BB0003D879 /* MenuControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuControls.swift; sourceTree = "<group>"; };
 		A3336635215BE3F00003D879 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		A333663B215BF32F0003D879 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		46CA7FAD215AB42D0048EA4D /* Fobitopia */ = {
 			isa = PBXGroup;
 			children = (
+				A31683F72166743800D43E01 /* Fonts */,
 				DD4A9ECF215D2E5000B28365 /* Game */,
 				46CA7FCB215AB5BE0048EA4D /* Menus */,
 				46CA7FAE215AB42D0048EA4D /* AppDelegate.swift */,
@@ -100,6 +103,14 @@
 			);
 			name = Menus;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		A31683F72166743800D43E01 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A31683F82166744600D43E01 /* Snake Jacket.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		A31925F1215D37B4006D9CBB /* Sounds */ = {
@@ -203,6 +214,7 @@
 				46CA7FBA215AB42D0048EA4D /* Main.storyboard in Resources */,
 				46CA7FB1215AB42D0048EA4D /* GameScene.sks in Resources */,
 				A3368E3D216262C000A480E6 /* Ram.wav in Resources */,
+				A31683F92166744600D43E01 /* Snake Jacket.ttf in Resources */,
 				A3368E3C216262C000A480E6 /* Morgan.wav in Resources */,
 				A3368E3E216262C000A480E6 /* Zenda.wav in Resources */,
 				46CA7FBC215AB4310048EA4D /* Assets.xcassets in Resources */,

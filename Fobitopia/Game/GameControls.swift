@@ -16,8 +16,14 @@ struct GameControls {
     //Background
     let house: SKSpriteNode
     
+    //
+    let dialog: SKSpriteNode
+    
     //Return Button
     let returnButton: SKSpriteNode
+    
+    //FaceDialog
+    let faceRam: SKSpriteNode
     
     
     //Animations
@@ -50,6 +56,20 @@ struct GameControls {
             y: (inThisScene.size.height * (((980 + (returnButton.size.height / 2)) / 1080 ) * 100) / 100)
         )
         
+        //Dialog
+        dialog = SKSpriteNode.init(imageNamed: "dialog")
+        dialog.name = "dialog"
+        dialog.zPosition = 14
+        dialog.position = CGPoint(
+            x: (inThisScene.size.width * (((960 + (returnButton.size.width / 2)) / 1920 ) * 100) / 100),
+            y: (inThisScene.size.height * (((850 + (returnButton.size.height / 2)) / 1080 ) * 100) / 100)
+        )
+        dialog.size = CGSize(
+            
+            width: (dialog.size.width * (inThisScene.size.width / dialog.size.width)*(((dialog.size.width/1920)*200)/100)),
+            
+            height: (dialog.size.height * (inThisScene.size.height / dialog.size.height)*(((dialog.size.height/1080)*200)/100)))
+        
         //Init Background
         house = SKSpriteNode.init(imageNamed: "house1")
         house.name = "house"
@@ -71,6 +91,21 @@ struct GameControls {
                     SKAction.repeat(houseAnimation, count: 1).reversed()
                     ]))]))
         
+        
+        
+        //FaceDialog Ramstey
+        faceRam = SKSpriteNode(imageNamed: "RFaceC")
+        faceRam.name = "faceRam"
+        faceRam.zPosition = 15
+        faceRam.position = CGPoint(
+            x: (inThisScene.size.width * (((300 + (faceRam.size.width / 2)) / 1920 ) * 100) / 100),
+            y: (inThisScene.size.height * (((850 + (returnButton.size.height / 2)) / 1080 ) * 100) / 100)
+        )
+        faceRam.size = CGSize(
+            
+            width: (faceRam.size.width * (inThisScene.size.width / faceRam.size.width)*(((faceRam.size.width/1920)*200)/100)),
+            
+            height: (dialog.size.height * (inThisScene.size.height / faceRam.size.height)*(((faceRam.size.height/1080)*200)/100)))
         
         //Init Character Ramstey
         playerRam = SKSpriteNode(imageNamed: "RIdle1")

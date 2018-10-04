@@ -17,6 +17,9 @@ let BorderCategory : UInt32 = 0x1 << 2
 
 class GameScene: SKScene {
     
+    //textLabel
+    let ramLabel = SKLabelNode(fontNamed: "Snake Jacket")
+    
     var personaje: SKSpriteNode!
     var animaLeft: SKAction!
     var animaRight: SKAction!
@@ -24,7 +27,7 @@ class GameScene: SKScene {
     var dirX: CGFloat = 0.0
     var playerRam : SKSpriteNode!
  
-        var gameViewController: GameViewController!
+    var gameViewController: GameViewController!
     //Game Controls
     var gameControls: GameControls!
     var characterControls: CharacterControls!
@@ -57,10 +60,31 @@ class GameScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func initFont(){
+        ramLabel.fontColor = SKColor.red
+        ramLabel.fontSize = 50
+        ramLabel.zPosition = 100
+        ramLabel.text = "Time to have fun"
+        
+        ramLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
+        ramLabel.position = CGPoint(x: 200, y: frame.size.height - 90 )
+        addChild(ramLabel)
+        
+        UIView.animate(withDuration: 0.7, delay: 1.0, options: .curveLinear, animations: {
+            self.view?.layoutIfNeeded()
+        }, completion: {finished in
+            print ("Movement letters")
+        })
+    }
+
+    
     
     override func didMove(to view: SKView) {
         self.addChild(gameControls.house)
         self.addChild(gameControls.returnButton)
+        self.addChild(gameControls.dialog)
+        self.addChild(gameControls.faceRam)
+        initFont()
 
         //Seleccionar personaje
         switch selectPlayer {
@@ -105,6 +129,11 @@ class GameScene: SKScene {
             let location = touch.location(in: self)
             let item = atPoint(location)
             let transition2 = SKTransition.crossFade(withDuration: 1.5)
+            if (item.name == "dialog"){
+                gameControls.dialog.isHidden = true
+                gameControls.faceRam.isHidden = true
+                ramLabel.isHidden = true
+            }
             if (item.name == "return_button"){
                 gameViewController.skView.presentScene(gameViewController.mainScene, transition: transition2)
                 removeAllChildren()
